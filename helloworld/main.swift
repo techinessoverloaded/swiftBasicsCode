@@ -547,3 +547,16 @@ import Security
 //{
 //    print(++i,terminator: ", ")
 //}
+
+//// Defining infix operator for exponentiation
+//infix operator ** : MultiplicationPrecedence
+//func **(lhs: Double, rhs: Double) -> Double
+//{
+//    pow(lhs, rhs)
+//}
+//var a = 2.5, b: Double = 6
+//print("a ** b = \(a ** b)")
+//print("b ** a = \(b ** a)")
+//print("a * b ** a * b = \(a * b ** a * b)")
+//print("b ** a * a * b = \(b ** a * a * b)")
+
