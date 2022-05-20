@@ -476,25 +476,6 @@ import Security
 //    }
 //}
 
-//postfix func ++(value: inout Int) -> Int
-//{
-//    let temp = value
-//    value += 1
-//    return temp
-//}
-//
-//prefix func ++(value: inout Int) -> Int
-//{
-//    value += 1
-//    return value
-//}
-//
-//var a = 5
-//var b = a++
-//print(b)
-//print(a++)
-//print(++a)
-
 //func println2(_ items: Any...)
 //{
 //    for x in items
@@ -526,3 +507,43 @@ import Security
 //println2("Hope you are doing well !")
 //println2("This is from an overloaded function !",45,60,39,57.5,separator: ", ")
 //println2(separator: " -> ","This is from another overloaded function !",99,66,"Hello",154.9)
+
+//// Post-Increment Operator - Returns existing value and Increments
+//postfix func ++(value: inout Int) -> Int
+//{
+//    let temp = value
+//    value += 1
+//    return temp
+//}
+//
+//// Pre-Increment Operator - Increments first and returns new value
+//prefix func ++(value: inout Int) -> Int
+//{
+//    value += 1
+//    return value
+//}
+
+//var a = 5
+//var b = a++ + a + ++a + a++ + a
+//a = b++ + ++b
+//print("a = \(a)")
+//print("a++ = \(a++)")
+//print("++a = \(++a)")
+//print("b = \(b)")
+//print("b++ = \(b++)")
+//print("++b = \(++b)")
+//
+//// Sample while loop using ++ operator
+//var i = 0
+//// Prints from 0 to 9 since Post-Increment operator is used
+//while i < 10
+//{
+//    print(i++,terminator: ", ")
+//}
+//print()
+//i = 0
+//// Prints from 1 to 10 since Pre-Increment operator is used
+//while i < 10
+//{
+//    print(++i,terminator: ", ")
+//}
