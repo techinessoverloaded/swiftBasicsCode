@@ -560,3 +560,9 @@ import Security
 //print("a * b ** a * b = \(a * b ** a * b)")
 //print("b ** a * a * b = \(b ** a * a * b)")
 
+let arr = [34, 99, 56, 12, 10, 108, 543, 7]
+print("Original Array: \(arr)")
+let sortedArr = arr.sorted { lhs, rhs in
+    lhs > rhs
+}
+print("Array sorted in Descending Order: \(sortedArr)")
