@@ -3,6 +3,9 @@
 //var str = readLine() ?? "No value"
 //var str2 = str.trimmingCharacters(in: .whitespacesAndNewlines)
 
+import Darwin
+import Security
+
 ////var str2 = str.replacingOccurrences(of: "88", with: "989")
 //print("String value : \(str2)")
 //var intVal = Int(str2) ?? 0
@@ -357,3 +360,169 @@
 //  print("No parameter was passed !")
 //}
 
+//var one: Int32 =  Int32.min
+//print(one)
+//var two: Int64 = Int64(one)
+//print(two)
+
+//func swapUsingPointer(_ a: UnsafeMutablePointer<Int>, _ b: UnsafeMutablePointer<Int>)
+//{
+//    (a.pointee, b.pointee) = (b.pointee, a.pointee) //pointee gives the value pointed by the pointer
+//}
+//var a = 5, b = 6
+//print("Original a and b: (\(a),\(b))")
+//swapUsingPointer(&a, &b)
+//print("After swapping a and b: (\(a),\(b))")
+
+//func checkDivisibilityBy2(of number: Int) -> Bool
+//{
+//    return number%2 == 0
+//}
+//
+//func checkDivisibilityBy2Again(of number: Int) -> Bool
+//{
+//    number%2 == 0 // Implicitly returns a Bool. return keyword not used.
+//}
+//
+//print(checkDivisibilityBy2(of: 46) ? "46 is Divisible by 2" : "46 is not Divisible by 2")
+//print(checkDivisibilityBy2Again(of: 46) ? "46 is Divisible by 2" : "46 is not Divisible by 2")
+//
+//var a = 48
+//a%2 == 0 ? print("EVEN") : print("ODD") // executing statements using ? :
+//
+//a = a%2 == 0 ? 0 : 1 // assigning values using ? :
+//print(a)
+
+//func swap(_ x: inout Int, _ y: inout Int)
+//{
+//    (x, y) = (y, x)
+//}
+//print(type(of: swap))
+//print(type(of: swap) == ((inout Int, inout Int) -> ()).self)
+
+//let nums = [1, 2, 3, 4, 5]
+//let textualNums = ["One", "Two", "Three", "Four", "Five"]
+//let dict = Dictionary(uniqueKeysWithValues: zip(nums, textualNums))
+//print("Zipped Dictionary: \(dict)")
+//print(type(of: dict))
+
+//func multiplication(_ numbers: Int...) -> Int
+//{
+//    var p = 1
+//    numbers.forEach{
+//        p *= $0
+//    }
+//    return p
+//}
+//
+//var performOperation: (Int...) -> Int = addition // Assigning performOperation to Addition Function
+//print("Sum: \(performOperation(99, 88, 77, 55, 33))")
+//performOperation = multiplication // Assigning performOperation to Multiplication Function
+//print("Product: \(performOperation(99, 88, 77, 55, 33))")
+
+//func addition(_ numbers: Int...) -> Int
+//{
+//    var s = 0
+//    numbers.forEach{
+//        s += $0
+//    }
+//    return s
+//}
+//
+//func printAdditionResult(additionFn: (Int...) -> Int)
+//{
+//    print("The sum is: \(additionFn(78, 99, 12, 34, 56))")
+//}
+//
+//printAdditionResult(additionFn: addition)
+
+//typealias functionTemplate = (Int) -> Int
+
+//func chooseIncOrDec(shouldDecrement: Bool = false) -> functionTemplate
+//{
+//    func incrementAndReturn(_ value: Int) -> Int
+//    {
+//        value + 1
+//    }
+//    func decrementAndReturn(_ value: Int) -> Int
+//    {
+//        value - 1
+//    }
+//    return shouldDecrement ? decrementAndReturn : incrementAndReturn
+//}
+//
+//var a = 5
+//print("Moving 5 towards zero...")
+//let chosenFunction = chooseIncOrDec(shouldDecrement: true)
+//while a >= 0
+//{
+//    print(a)
+//    a = chosenFunction(a)
+//}
+
+//extension Int
+//{
+//    static postfix func ++(value: inout Int) -> Int
+//    {
+//        let temp = value
+//        value += 1
+//        return temp
+//    }
+//
+//    static prefix func ++(value: inout Int) -> Int
+//    {
+//        value += 1
+//        return value
+//    }
+//}
+
+//postfix func ++(value: inout Int) -> Int
+//{
+//    let temp = value
+//    value += 1
+//    return temp
+//}
+//
+//prefix func ++(value: inout Int) -> Int
+//{
+//    value += 1
+//    return value
+//}
+//
+//var a = 5
+//var b = a++
+//print(b)
+//print(a++)
+//print(++a)
+
+//func println2(_ items: Any...)
+//{
+//    for x in items
+//    {
+//        print(x, terminator: " ")
+//    }
+//    print("\n")
+//}
+//
+//func println2(_ items: Any..., separator: String)
+//{
+//    for x in items
+//    {
+//        print(x, terminator: separator)
+//    }
+//    print("\n")
+//}
+//
+//func println2(separator: String, _ items: Any...)
+//{
+//    for x in items
+//    {
+//        print(x, terminator: separator)
+//    }
+//    print("\n")
+//}
+//
+//println2("Hello","World")
+//println2("Hope you are doing well !")
+//println2("This is from an overloaded function !",45,60,39,57.5,separator: ", ")
+//println2(separator: " -> ","This is from another overloaded function !",99,66,"Hello",154.9)
