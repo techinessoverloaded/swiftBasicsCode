@@ -1100,4 +1100,52 @@
 //    }
 //}
 
+class Animal: CustomStringConvertible
+{
+    var description: String
+    {
+        "Animal(isMammal: \(isMammal))"
+    }
+    
+    var isMammal: Bool
+    
+    func makeSound()
+    {
+        preconditionFailure("This method must be overridden by subclasses for it to work!!!") // Abstract Methods can be implemented like this
+    }
+    
+    init(isMammal: Bool)
+    {
+        self.isMammal = isMammal
+    }
+}
+
+class Dog: Animal
+{
+    override var description: String
+    {
+        "Dog(isMammal: true, isStrayDog: \(isStrayDog))"
+    }
+    
+    var isStrayDog: Bool
+    
+    override func makeSound()
+    {
+        print("Woof!!!")
+    }
+    
+    init(isStrayDog: Bool)
+    {
+        self.isStrayDog = isStrayDog
+        super.init(isMammal: true)
+    }
+}
+
+var animal: Animal = Animal(isMammal: false)
+print(animal)
+print(type(of: animal))
+animal = Dog(isStrayDog: false) // Works since Dog is a subclass of Animal.
+animal.makeSound()
+print(animal)
+print(type(of: animal))
 
