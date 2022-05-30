@@ -3,9 +3,6 @@
 //var str = readLine() ?? "No value"
 //var str2 = str.trimmingCharacters(in: .whitespacesAndNewlines)
 
-import Darwin
-import Security
-
 ////var str2 = str.replacingOccurrences(of: "88", with: "989")
 //print("String value : \(str2)")
 //var intVal = Int(str2) ?? 0
@@ -21,10 +18,7 @@ import Security
 //method(&param)
 //print(param)
 
-//typealias sampleTup = (Int, Int, Int, Int, Int, Int)
-//var tuple1 = sampleTup(1,3,5,7,9,21)
-//var tuple2 = (2,4,6,8,10,12)
-//print(tuple1 < tuple2)
+
 
 //var odd : Array<Int> = [1,3,5]
 //var even : [Int] = [2,4,6]
@@ -559,10 +553,551 @@ import Security
 //print("b ** a = \(b ** a)")
 //print("a * b ** a * b = \(a * b ** a * b)")
 //print("b ** a * a * b = \(b ** a * a * b)")
+//import Foundation
+//typealias sampleTup = (Int, Int, Int, Int, Int, Int)
+//var tuple1 = sampleTup(1,3,5,7,9,21)
+//var tuple2 = (2,4,6,8,10)
+////print(tuple1 < tuple2)
+////var str ="Hello  "
+////print(str.trimmingCharacters)
+//
+//func trimmingCharacters(in set: CharacterSet) -> String
+//{
+//    return " "
+//}
 
-let arr = [34, 99, 56, 12, 10, 108, 543, 7]
-print("Original Array: \(arr)")
-let sortedArr = arr.sorted { lhs, rhs in
-    lhs > rhs
-}
-print("Array sorted in Descending Order: \(sortedArr)")
+// Function to find memory address of variable
+//func address(_ of: UnsafeRawPointer) -> Int
+//{
+//    return Int(bitPattern: of)
+//}
+//
+//var arr1 = 4
+//var arr2 = arr1
+//
+//print("Before modifying arr2:")
+//print("Address of arr1: \(address(&arr1))")
+//print("Address of arr2: \(address(&arr2))")
+//
+//arr2 = 10
+//
+//print("After modifying arr2:")
+//print("Address of arr1: \(address(&arr1))")
+//print("Address of arr2: \(address(&arr2))")
+//var a: () -> Int
+//
+//print(type(of: a)==(() -> Int).self)
+
+//struct Example
+//{
+//    var value: String
+//
+//    init(_ value: String)
+//    {
+//        self.value = value
+//    }
+//
+//    func print()
+//    {
+//        Swift.print(value)
+//    }
+//}
+//var ex = Example("Hello World")
+//ex.print()
+
+//func address(of: UnsafeRawPointer) -> Int
+//{
+//    Int(bitPattern: of)
+//}
+//
+//final class Ref<T>
+//{
+//    var val: T
+//    init(_ v: T)
+//    {
+//        val = v
+//    }
+//}
+//
+//struct Box<T>
+//{
+//    var ref: Ref<T>
+//    init(_ x: T)
+//    {
+//        ref = Ref(x)
+//    }
+//
+//    var value: T
+//    {
+//        get
+//        {
+//            return ref.val
+//        }
+//        set(value)
+//        {
+//          if !isKnownUniquelyReferenced(&ref)
+//          {
+//              ref = Ref(value)
+//              return
+//          }
+//            ref.val = value
+//        }
+//    }
+//}
+//var box1 = Box(23)
+//var box2 = box1
+//print("Before Modifying")
+//print("Address of box 1: \(address(of: &box1))")
+//print("Address of box 2: \(address(of: &box2))")
+//print("After Modifying")
+//box2.value = 43
+//print("Address of box 1: \(address(of: &box1))")
+//print("Address of box 2: \(address(of: &box2))")
+
+
+//// Strong Reference Cycle
+//class Person : CustomStringConvertible
+//{
+//    var description: String
+//    {
+//        get {
+//            "\(name) resides in Apartment Number \(apartment!.unit)"
+//        }
+//    }
+//    let name: String
+//    init(name: String)
+//    {
+//        self.name = name
+//    }
+//    var apartment: Apartment?
+//    deinit
+//    {
+//        print("\(name) is being deinitialized")
+//    }
+//}
+//
+//class Apartment : CustomStringConvertible
+//{
+//    var description: String
+//    {
+//        get {
+//            "\(unit) has person \(person!.name)"
+//        }
+//    }
+//    let unit: String
+//    init(unit: String)
+//    {
+//        self.unit = unit
+//    }
+//    weak var tenant: Person?
+//    deinit
+//    {
+//        print("Apartment \(unit) is being deinitialized")
+//    }
+//}
+//var person: Person? = Person(name: "Kris")
+//var apartment: Apartment? = Apartment(unit: "5A")
+//person!.apartment = apartment
+//apartment!.tenant = person
+//print(person!.apartment!)
+//print(apartment!.tenant!)
+//person = nil
+//apartment = nil
+//var set = [1, 2, 3]
+//print(address(of: set))
+
+//let arr = [34, 99, 56, 12, 10, 108, 543, 7]
+//print("Original Array: \(arr)")
+//let sortedArr = arr.sorted { $0 > $1 }
+//print("Array sorted in Descending Order: \(sortedArr)")
+
+//func makeIncrementer(forIncrement amount: Int) -> () -> Int
+//{
+//    var runningTotal = 0
+//    func incrementer() -> Int
+//    {
+//        runningTotal += amount // runningTotal and amount captured by closure
+//        return runningTotal
+//    }
+//    return incrementer
+//}
+//let incrementBy10 = makeIncrementer(forIncrement: 10)
+//for _ in 0...3
+//{
+//    print("Incremented by 10: \(incrementBy10())")
+//}
+//let incrementBy20 = makeIncrementer(forIncrement: 20)
+//for _ in 0...3
+//{
+//    print("Incremented by 20: \(incrementBy20())")
+//}
+//print("Sum of both incrementers: \(incrementBy10() + incrementBy20())")
+//
+//var str = "Hello"
+
+//class HTMLElement {
+//
+//    let name: String
+//    let innerHtml: String?
+//
+//    lazy var asHTML: () -> String = { [unowned self] in
+//            if let text = self.innerHtml {
+//                return "<\(self.name)>\(text)</\(self.name)>"
+//            }
+//         else {
+//                return "<\(self.name) />"
+//            }
+//        }
+//
+//    init(name: String, innerHtml: String? = nil) {
+//        self.name = name
+//        self.innerHtml = innerHtml
+//    }
+//
+//    deinit {
+//        print("\(name) is being deinitialized")
+//    }
+//
+//}
+//var div: HTMLElement = HTMLElement(name: "div", innerHtml: "Hello")
+//print(div.asHTML())
+//let a = 5
+//print(a)
+
+//class A: CustomStringConvertible
+//{
+//    var value: Int
+//    var description: String
+//    {
+//        get
+//        {
+//            "A (value = \(value))"
+//        }
+//    }
+//
+//    init(_ value: Int)
+//    {
+//        self.value = value
+//    }
+//
+//    deinit
+//    {
+//        print("\(self) is being deinitialized !")
+//    }
+//}
+//let _ = A(5)
+//var aOpt: A? = A(10)
+//print(aOpt!)
+//aOpt = nil
+
+//var completionHandlers: [Int : (Int) -> Void] = [:]
+//func functionWithCompletionTracker(seed: Int, completionHandler: @escaping (Int) -> Void)
+//{
+//    if seed.isMultiple(of: 2)
+//    {
+//        completionHandlers[seed] = completionHandler
+//    }
+//}
+//let sampleCompletionHandler: (Int) -> Void  = {
+//    print("functionWithCompletionTracker() completed successfully for seed \($0) !")
+//}
+//for x in 0..<4
+//{
+//    let random = Int.random(in: x...40)
+//    functionWithCompletionTracker(seed: random, completionHandler: sampleCompletionHandler)
+//    if let handler = completionHandlers[random]
+//    {
+//        handler(random)
+//    }
+//    else
+//    {
+//        print("No Completion Handler for \(random) !")
+//    }
+//}
+
+//var customersInLine = ["Kris", "Hari", "Shiv", "Sunder", "Sathya"]
+//print(customersInLine.count)
+//func serveCustomer(customerProvider: @autoclosure () -> String)
+//{
+//    print("Now serving \(customerProvider())!")
+//}
+//serveCustomer(customerProvider: customersInLine.remove(at: 0)) // Using autoclosure
+//print(customersInLine.count)
+
+//struct Student: CustomStringConvertible
+//{
+//    private let _rollNo: Int // No need of mutation, hence let is used
+//    private var _name: String
+//    {
+//        willSet
+//        {
+//            print("Going to set the New Name: \(newValue)...")
+//        }
+//        didSet
+//        {
+//            print("Have set the New Name: \(_name) and disposed off the Old Name: \(oldValue) !")
+//        }
+//    }
+//    private var _department: String
+//
+//    var rollNo: Int // Get-Only Property
+//    {
+//        _rollNo
+//    }
+//
+//    var name: String
+//    {
+//        get
+//        {
+//            _name
+//        }
+//        set
+//        {
+//            _name = newValue
+//        }
+//    }
+//
+//    var department: String
+//    {
+//        get
+//        {
+//            _department
+//        }
+//        set
+//        {
+//            _department = newValue
+//        }
+//    }
+//
+//
+//    var description: String
+//    {
+//        "Student \(_name) of \(_department) Department has roll number: \(_rollNo)."
+//    }
+//
+//    init(rollNo: Int, name: String, department: String)
+//    {
+//        self._rollNo = rollNo
+//        self._name = name
+//        self._department = department
+//    }
+//
+//    mutating func changeNameAndDepartment(newName: String, newDepartment: String)
+//    {
+//        _name = newName
+//        _department = newDepartment
+//    }
+//
+//}
+//
+//var student = Student(rollNo: 1, name: "Kris", department: "CSE")
+//print(student)
+//student.changeNameAndDepartment(newName: "Shiv", newDepartment: "IT")
+//print(student)
+
+//struct Point
+//{
+//    var x: Int
+//    var y: Int
+//    static let origin: Self = Self(x: 0, y:0)
+//
+//    static func +(lhs: Self, rhs: Self) -> Self
+//    {
+//        Point(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+//    }
+//
+//    static func -=(lhs: inout Self, rhs: Self)
+//    {
+//        lhs.x -= rhs.x
+//        lhs.y -= rhs.y
+//    }
+//}
+//let point1 = Point(x: 5, y: 6)
+//print("Point 1: \(point1)")
+//let point2 = Point(x: 2, y: 10)
+//print("Point 2: \(point2)")
+//var point3 = point1 + point2
+//print("Sum of Point 1 and Point 2: \(point3)")
+//let point4 = Point(x: 3, y: 9)
+//print("Point 4: \(point4)")
+//point3 -= point4
+//print("Point 3 after subtracting Point 4 from it: \(point3)")
+//print("The origin is always located at: \(Point.origin)")
+
+//struct Person
+//{
+//    var name: String
+//    var age: Int
+//}
+//
+//struct Game
+//{
+//    var players: [Person]
+//    var value: Int
+//    {
+//        didSet
+//        {
+//            print("old value \(value)")
+//        }
+//    }
+//    lazy var mostRecentlyAddedPlayer = players.last!
+//}
+//
+//let player1 = Person(name: "Kris", age: 21)
+//let player2 = Person(name: "Sundar", age: 21)
+//let player3 = Person(name: "Ram", age: 22)
+//let player4 = Person(name: "Shiv", age: 25)
+//
+//let allPlayers = [player1, player2, player3, player4]
+//
+//var game =  Game(players: allPlayers, value: 5)
+//print(game)
+//print(game.mostRecentlyAddedPlayer)
+//game.players.append(Person(name: "Skand", age: 22))
+//print(game.mostRecentlyAddedPlayer) // Lazy variable does not get computed after the first time
+//game.mostRecentlyAddedPlayer = game.players.last! //Manually Reassigning to get updated value
+//print(game.mostRecentlyAddedPlayer)
+
+//@propertyWrapper struct Capitalized
+//{
+//    private var originalValue: String
+//
+//    var wrappedValue: String
+//    {
+//        get
+//        {
+//            originalValue
+//        }
+//        set
+//        {
+//            originalValue = capitalizeString(newValue)
+//        }
+//    }
+//
+//    private func capitalizeString(_ value: String) -> String
+//    {
+//        let first = value[value.startIndex].uppercased()
+//        let remaining = String(value.dropFirst())
+//        return first + remaining
+//    }
+//
+//    init(wrappedValue: String)
+//    {
+//        self.originalValue = ""
+//        self.wrappedValue = wrappedValue
+//    }
+//
+//}
+//
+//struct Person: CustomStringConvertible
+//{
+//    @Capitalized var firstName: String
+//    @Capitalized var lastName: String
+//
+//    var fullName: String
+//    {
+//        firstName + " " + lastName
+//    }
+//
+//    var description: String
+//    {
+//        "Person(firstName: \(firstName), lastName: \(lastName), fullName: \(fullName))"
+//    }
+//}
+//
+//var person1 = Person(firstName: "ashwin", lastName: "kumar")
+//print(person1) // Capitalized Version got updated
+//person1.firstName = "tharun"
+//print(person1.firstName) // Capitalized Version got updated
+
+//class Student: CustomStringConvertible, Equatable
+//{
+//    var rollNo: Int
+//    var name: String
+//    var description: String
+//    {
+//        "Student(rollNo = \(rollNo), name = \(name))"
+//    }
+//
+//    init(rollNo: Int, name: String)
+//    {
+//        self.rollNo = rollNo
+//        self.name = name
+//    }
+//
+//    func changeRollNoAndName(newRollNo:Int, newName: String)
+//    {
+//        rollNo = newRollNo
+//        name = newName
+//    }
+//
+//    public static func == (lhs: Student, rhs: Student) -> Bool
+//    {
+//        lhs.name == rhs.name && lhs.rollNo == lhs.rollNo
+//    }
+//
+//    deinit
+//    {
+//        print("Student: \(name) is being deinitialized...")
+//    }
+//}
+//
+//let student1 = Student(rollNo: 1, name: "Kris")
+//let student2 = student1
+//let student3 = Student(rollNo: 2, name: "Kris")
+//print("Student 1: \(student1)")
+//print("Student 2: \(student2)")
+//print("Student 3: \(student3)")
+//print("student1 === student2: \(student1 === student2)")
+//student2.rollNo = 2 // Changing rollNo of student 2
+//print("Student 1: \(student1)") // Student 1 rollNo also changed. Call by reference behaviour
+//print("Student 2: \(student2)")
+//print("student2 === student3: \(student2 === student3)") // Even though Same value but different reference, so false
+//print("student2 == student3: \(student2 == student3)") // Even though different reference, same value is present. so == returns true
+//print("student1 == student2: \(student1 == student2)")
+//print("student1 == student3: \(student1 == student3)")
+//let student4 = Student(rollNo: 3, name: "Ram")
+//print("Student 4: \(student4)")
+//print("student4 != student1: \(student4 != student1)")// true as rollNo not and Name equal
+
+//class Age: CustomStringConvertible
+//{
+//    var description: String
+//    {
+//        "Age(\(value))"
+//    }
+//
+//    var value: Int
+//
+//    init?(_ value: Int)
+//    {
+//        if value < 0 || value > 100
+//        {
+//            print("Invalid Age \(value)! ")
+//            return nil
+//        }
+//        else
+//        {
+//            self.value = value
+//        }
+//    }
+//
+//    init()
+//    {
+//        self.value = Int.random(in: 0...100)
+//    }
+//}
+//
+//for x in [-2, 21, 500]
+//{
+//    if let age = Age(x)
+//    {
+//        print(age)
+//    }
+//    else
+//    {
+//        print("As Invalid Age \(x) is provided, randomizing Age Value: \(Age())")
+//    }
+//}
+
+
