@@ -1100,52 +1100,454 @@
 //    }
 //}
 
-class Animal: CustomStringConvertible
-{
-    var description: String
-    {
-        "Animal(isMammal: \(isMammal))"
-    }
-    
-    var isMammal: Bool
-    
-    func makeSound()
-    {
-        preconditionFailure("This method must be overridden by subclasses for it to work!!!") // Abstract Methods can be implemented like this
-    }
-    
-    init(isMammal: Bool)
-    {
-        self.isMammal = isMammal
-    }
-}
+//class Node: CustomStringConvertible
+//{
+//    var next: Node?
+//    var data: Int
+//    var description: String
+//    {
+//        var text = ""
+//        if let n = next
+//        {
+//            text = n.description
+//        }
+//        else
+//        {
+//            text = "nil"
+//        }
+//        return "\(data) -> \(text)"
+//    }
+//
+//    init(data: Int, next: Node? = nil)
+//    {
+//        self.data = data
+//        self.next = next
+//    }
+//}
+//class LinkedList
+//{
+//    var root: Node
+//
+//    init(root: Node)
+//    {
+//        self.root = root
+//    }
+//
+//    func addNewNode(_ newData: Int)
+//    {
+//        var head = root
+//        let newNode = Node(data: newData)
+//        while head.next != nil
+//        {
+//            head = head.next!
+//        }
+//        head.next = newNode
+//    }
+//
+//    func addMultipleNodes(_ newData: Int...)
+//    {
+//        for x in newData
+//        {
+//            addNewNode(x)
+//        }
+//    }
+//
+//    func printList()
+//    {
+//        print(root)
+//    }
+//}
+//var list = LinkedList(root: Node(data: 9))
+//list.addMultipleNodes(8, 7, 6, 5, 4, 3, 2, 1)
+//list.printList()
 
-class Dog: Animal
-{
-    override var description: String
-    {
-        "Dog(isMammal: true, isStrayDog: \(isStrayDog))"
-    }
-    
-    var isStrayDog: Bool
-    
-    override func makeSound()
-    {
-        print("Woof!!!")
-    }
-    
-    init(isStrayDog: Bool)
-    {
-        self.isStrayDog = isStrayDog
-        super.init(isMammal: true)
-    }
-}
+//class Animal: CustomStringConvertible
+//{
+//    var description: String
+//    {
+//        "Animal(isMammal: \(isMammal))"
+//    }
+//
+//    var isMammal: Bool
+//
+//    init(isMammal: Bool)
+//    {
+//        self.isMammal = isMammal
+//    }
+//
+//    func makeSound()
+//    {
+//        fatalError("This method must be overridden by subclasses for it to work!!!") // Abstract Methods can be implemented like this
+//    }
+//}
+//
+//class Dog: Animal
+//{
+//    override var description: String
+//    {
+//        "Dog(isMammal: \(isMammal), isStrayDog: \(isStrayDog))"
+//    }
+//
+//    var isStrayDog: Bool
+//
+//    override func makeSound()
+//    {
+//        print("Woof!!!")
+//    }
+//
+//    init(isStrayDog: Bool)
+//    {
+//        self.isStrayDog = isStrayDog
+//        super.init(isMammal: true)
+//    }
+//}
+//
+//class PetDog: Dog
+//{
+//    override var description: String
+//    {
+//        "PetDog(name: \(name), isMammal: \(isMammal), isStrayDog: \(isStrayDog))"
+//    }
+//
+//    var name: String
+//
+//    init(name: String)
+//    {
+//        self.name = name
+//        super.init(isStrayDog: false)
+//    }
+//}
+//
+//var petDog = PetDog(name: "Jimmy")
+//print(type(of: petDog))
+//print(petDog)
 
-var animal: Animal = Animal(isMammal: false)
-print(animal)
-print(type(of: animal))
-animal = Dog(isStrayDog: false) // Works since Dog is a subclass of Animal.
-animal.makeSound()
-print(animal)
-print(type(of: animal))
+//class privateA
+//{
+//    private func a()
+//    {
+//
+//    }
+//}
+//class fileprivateA
+//{
+//    fileprivate func a()
+//    {
+//
+//    }
+//}
+//class internalA
+//{
+//    internal func a()
+//    {
+//
+//    }
+//}
+//class publicA
+//{
+//    public func a()
+//    {
+//
+//    }
+//}
+//class openA
+//{
+//    open func a()
+//    {
+//
+//    }
+//}
+//
+//class B: openA
+//{
+//    override open func a()
+//    {
+//
+//    }
+//}
+//B().a()
+
+//private class privateA
+//{
+//    private var a: Int
+//
+//    init(_ a: Int)
+//    {
+//        self.a = a
+//    }
+//}
+//
+//fileprivate class fileprivateA
+//{
+//    public var a: Int
+//
+//    init(_ a: Int)
+//    {
+//        self.a = a
+//    }
+//}
+//
+//internal class internalA
+//{
+//    public var a: Int
+//
+//    init(_ a: Int)
+//    {
+//        self.a = a
+//    }
+//}
+//
+//public class publicA
+//{
+//    public var a: Int
+//
+//    init(_ a: Int)
+//    {
+//        self.a = a
+//    }
+//}
+//
+//open class openA
+//{
+//    public var a: Int
+//
+//    init(_ a: Int)
+//    {
+//        self.a = a
+//    }
+//}
+//
+//open class B: openA
+//{
+//
+//}
+
+//class A: CustomStringConvertible
+//{
+//    var a: Int
+//    var b: Int
+//
+//    var description: String
+//    {
+//        "(a = \(a), b = \(b))"
+//    }
+//
+//    init(_ a: Int)
+//    {
+//        self.a = a
+//        self.b = self.a // Copy passed
+//    }
+//}
+//
+//struct X
+//{
+//    var x: A
+//    var y: A
+//
+//    init(_ x: A)
+//    {
+//        self.x = x
+//        self.y = self.x // Reference Passed
+//    }
+//}
+//
+//var x1 = X(A(2))
+//var x2 = x1
+//print(x1)
+//print(x2)
+//x1.y.a = 12
+//x1.y.b = 11
+//x2.y.a = 13
+//print(x1)
+//print(x2)
+
+//class A
+//{
+//    static func nonOverridableFunc() // Equivalent of final class func
+//    {
+//        print("Non-overridable static function")
+//    }
+//
+//    class func overridableFunc()
+//    {
+//        print("Overridable class function (Now in class A)")
+//    }
+//
+//    final class func nonOverridableFunc2()
+//    {
+//        print("Non-overridable class function mimicking static function")
+//    }
+//}
+//
+//class B: A
+//{
+//    override class func overridableFunc()
+//    {
+//        print("Overridable class function (Now in class B)")
+//    }
+//}
+//
+//A.nonOverridableFunc()
+//A.overridableFunc()
+//B.overridableFunc()
+//A.nonOverridableFunc2()
+
+//class Message
+//{
+//    var content: String
+//    var sender: String
+//    var receiver: String
+//
+//    init(content: String, sender: String, receiver: String)
+//    {
+//        self.content = content
+//        self.sender = sender
+//        self.receiver = receiver
+//    }
+//
+//    convenience init(content: String)
+//    {
+//        self.init(content: content, sender: "Anonymous", receiver: "Anonymous")
+//    }
+//
+//    func sendMessage()
+//    {
+//        print("\(content) sent by \(sender)")
+//        print("\(content) received by \(receiver)")
+//    }
+//}
+//
+//Message(content: "Hello !", sender: "Kris", receiver: "Shiv").sendMessage()
+//Message(content: "Stay safe !").sendMessage()
+
+//class Person
+//{
+//    var name: String
+//    var age: Int
+//
+//    required init(name: String, age: Int)
+//    {
+//        self.name = name
+//        self.age = age
+//    }
+//
+//    deinit
+//    {
+//        print("Person deinitialized...")
+//    }
+//}
+//
+//class Student: Person
+//{
+//    var rollNumber: Int
+//
+//    required init(name: String, age: Int)
+//    {
+//        self.rollNumber = Int.random(in: 1...100)
+//        super.init(name: name, age: age)
+//    }
+//
+//    deinit
+//    {
+//        print("Student deinitialized...")
+//    }
+//}
+//
+//var _ = Student(name: "Shri", age: 21)
+
+//class MultiplicationTables
+//{
+//    var multiplier: Int
+//
+//    init(of multiplier: Int)
+//    {
+//        self.multiplier = multiplier
+//    }
+//
+//    subscript(index: Int) -> Int //Read-only subscript
+//    {
+//        index * multiplier
+//    }
+//}
+//let elevenTables = MultiplicationTables(of: 11)
+//for x in 10...20
+//{
+//    print("\(x) * 11 = \(elevenTables[x])") // Using Subscript syntax [] to get value
+//}
+
+//class RandomMatrix
+//{
+//    var rows: Int, columns: Int, values: [Int]
+//
+//    init(rows: Int, columns: Int)
+//    {
+//        self.rows = rows
+//        self.columns = columns
+//        values = Array(repeating: 0, count: rows * columns)
+//        for i in 0..<(rows * columns)
+//        {
+//            values[i] = Int.random(in: 1...100)
+//        }
+//    }
+//
+//    func indexIsValid(row: Int, column: Int) -> Bool
+//    {
+//        row >= 0 && row < rows && column >= 0 && column < columns
+//    }
+//
+//    subscript(row: Int, column: Int) -> Int
+//    {
+//        get
+//        {
+//            assert(indexIsValid(row: row, column: column), "Index out of range")
+//            return values[(row * columns) + column]
+//        }
+//        set
+//        {
+//            assert(indexIsValid(row: row, column: column), "Index out of range")
+//            values[(row * columns) + column] = newValue
+//        }
+//    }
+//}
+//
+//let squareMatrix = RandomMatrix(rows: 4, columns: 4)
+//for i in 0..<4
+//{
+//    for j in 0..<4
+//    {
+//        print(squareMatrix[i, j],terminator: " ") // Using multiple parameter subscript
+//    }
+//    print()
+//}
+
+//class MultiplicationTables
+//{
+//    var multiplier: Int
+//
+//    private init(of multiplier: Int)
+//    {
+//        self.multiplier = multiplier
+//    }
+//
+//    subscript(index: Int) -> Int //Read-only subscript
+//    {
+//        index * multiplier
+//    }
+//
+//    static subscript(multiplier: Int) -> MultiplicationTables //Read-only static subscript
+//    {
+//        MultiplicationTables(of: multiplier)
+//    }
+//}
+//
+//print("Tables of 9 and 10: ")
+//for x in 9...10
+//{
+//    print("\(x) Tables")
+//    for y in 1...10
+//    {
+//        print("\(x) * \(y) = \(MultiplicationTables[x][y])")
+//    }
+//    print()
+//}
 
