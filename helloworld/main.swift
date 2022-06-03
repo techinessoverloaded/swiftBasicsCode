@@ -3,6 +3,8 @@
 //var str = readLine() ?? "No value"
 //var str2 = str.trimmingCharacters(in: .whitespacesAndNewlines)
 
+import Darwin
+
 ////var str2 = str.replacingOccurrences(of: "88", with: "989")
 //print("String value : \(str2)")
 //var intVal = Int(str2) ?? 0
@@ -1100,67 +1102,6 @@
 //    }
 //}
 
-//class Node: CustomStringConvertible
-//{
-//    var next: Node?
-//    var data: Int
-//    var description: String
-//    {
-//        var text = ""
-//        if let n = next
-//        {
-//            text = n.description
-//        }
-//        else
-//        {
-//            text = "nil"
-//        }
-//        return "\(data) -> \(text)"
-//    }
-//
-//    init(data: Int, next: Node? = nil)
-//    {
-//        self.data = data
-//        self.next = next
-//    }
-//}
-//class LinkedList
-//{
-//    var root: Node
-//
-//    init(root: Node)
-//    {
-//        self.root = root
-//    }
-//
-//    func addNewNode(_ newData: Int)
-//    {
-//        var head = root
-//        let newNode = Node(data: newData)
-//        while head.next != nil
-//        {
-//            head = head.next!
-//        }
-//        head.next = newNode
-//    }
-//
-//    func addMultipleNodes(_ newData: Int...)
-//    {
-//        for x in newData
-//        {
-//            addNewNode(x)
-//        }
-//    }
-//
-//    func printList()
-//    {
-//        print(root)
-//    }
-//}
-//var list = LinkedList(root: Node(data: 9))
-//list.addMultipleNodes(8, 7, 6, 5, 4, 3, 2, 1)
-//list.printList()
-
 //class Animal: CustomStringConvertible
 //{
 //    var description: String
@@ -1551,3 +1492,952 @@
 //    print()
 //}
 
+//enum Direction
+//{
+//    case north, south, east, west
+//}
+//
+//var directionToMove = Direction.east
+//print("Direction to Move: \(directionToMove)")
+//print(type(of: directionToMove) == Direction.self)
+//let preferredDirection: Direction = .north
+//print("Preferred Direction: \(preferredDirection)")
+//directionToMove = preferredDirection
+//print("Direction to Move changed to Preferred Direction: \(directionToMove)")
+//
+//enum Gender
+//{
+//    case male, female, other
+//}
+//
+//var gender: Gender = .male
+//
+//switch(gender)
+//{
+//case .male:
+//    print("MALE")
+//case .female:
+//    print("FEMALE")
+//case .other:
+//    print("OTHER")
+//}
+
+//enum Beverage: CaseIterable
+//{
+//    case coffee, tea, juice, milkshake
+//}
+//
+//print("\(Beverage.allCases.count) Beverages are available. They are:")
+//
+//for x in Beverage.allCases
+//{
+//    print(x)
+//}
+
+//enum Planet: Int, CaseIterable
+//{
+//    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
+//}
+//
+//print("Planets of Milky Way are:")
+//
+//for x in Planet.allCases
+//{
+//    print("\(x.rawValue) : \(x)")
+//}
+//
+//let earth = Planet(rawValue: 3)
+//print(earth!)
+
+//enum Transaction
+//{
+//    case card(cardNo: String, pin: UInt, amount: Double)
+//    case upi(upiId: String, upiPin: UInt, amount: Double)
+//    case cash(amount: Double)
+//}
+//
+//func makeTransaction(txn: Transaction)
+//{
+//    switch(txn)
+//    {
+//    case let .card(cardNo, pin, amount):
+//        print("\(amount) transacted from Card: \(cardNo) having PIN: \(pin)")
+//    case let .upi(upiId, upiPin, amount):
+//        print("\(amount) transacted from account using UPI ID: \(upiId) having PIN: \(upiPin)")
+//    case let .cash(amount):
+//        print("\(amount) was transacted as liquid cash")
+//    }
+//}
+//
+//let upiPayment: Transaction = .upi(upiId: "abc@upi", upiPin: 1234, amount: 1000)
+//makeTransaction(txn: upiPayment)
+
+//indirect enum ArithmeticExpression
+//{
+//    case number(Int)
+//    case addition(ArithmeticExpression, ArithmeticExpression)
+//    case multiplication(ArithmeticExpression, ArithmeticExpression)
+//}
+//
+//func evaluate(_ expression: ArithmeticExpression) -> Int
+//{
+//    switch expression
+//    {
+//    case let .number(value):
+//        return value
+//    case let .addition(left, right):
+//        return evaluate(left) + evaluate(right)
+//    case let .multiplication(left, right):
+//        return evaluate(left) * evaluate(right)
+//    }
+//}
+//
+//let nine = ArithmeticExpression.number(9)
+//let five = ArithmeticExpression.number(5)
+//let sum = ArithmeticExpression.addition(five, nine)
+//let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(81))
+//print(evaluate(product))
+
+//class MediaItem
+//{
+//    var name: String
+//    init(name: String)
+//    {
+//        self.name = name
+//    }
+//}
+//
+//class Movie: MediaItem
+//{
+//    var director: String
+//    init(name: String, director: String)
+//    {
+//        self.director = director
+//        super.init(name: name)
+//    }
+//}
+//
+//class Song: MediaItem
+//{
+//    var artist: String
+//    init(name: String, artist: String)
+//    {
+//        self.artist = artist
+//        super.init(name: name)
+//    }
+//}
+//
+//let library: [MediaItem] = [
+//    Movie(name: "Casablanca", director: "Michael Curtiz"),
+//    Song(name: "Blue Suede Shoes", artist: "Elvis Presley"),
+//    Movie(name: "Citizen Kane", director: "Orson Welles"),
+//    Song(name: "The One And Only", artist: "Chesney Hawkes"),
+//    Song(name: "Never Gonna Give You Up", artist: "Rick Astley")
+//]
+//
+//let movie: MediaItem = Movie(name: "Jurassic Park", director: "Steven Spielberg") // Implicit Upcasting
+//print(type(of: movie))
+//print(movie is MediaItem)
+//print(movie is Movie)
+//print((movie as! Movie).director) // Downcasting to access Movie Director
+//
+//let song: MediaItem = Song(name: "Un Mela", artist: "Jitin") as MediaItem // Explicit Typecasting
+//print(type(of: song))
+//print(song is MediaItem)
+//print(song is Song)
+//print((song as! Song).artist) // Downcasting to access Song Artist
+
+//extension Double
+//{
+//    var km: Double { return self * 1_000.0 }
+//    var m: Double { return self }
+//    var cm: Double { return self / 100.0 }
+//    var mm: Double { return self / 1_000.0 }
+//    var ft: Double { return self / 3.28084 }
+//}
+//
+//let oneInch = 25.4.mm
+//print("One inch is \(oneInch) meters")
+//let threeFeet = 3.ft
+//print("Three feet is \(threeFeet) meters")
+
+//struct Size
+//{
+//    var width = 0.0, height = 0.0
+//}
+//
+//struct Point
+//{
+//    var x = 0.0, y = 0.0
+//}
+//
+//struct Rect
+//{
+//    var origin = Point()
+//    var size = Size()
+//}
+//
+//extension Rect
+//{
+//    init(center: Point, size: Size)
+//    {
+//        let originX = center.x - (size.width / 2)
+//        let originY = center.y - (size.height / 2)
+//        self.init(origin: Point(x: originX, y: originY), size: size)
+//    }
+//}
+//
+//let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
+//
+//print(centerRect)
+
+//extension Int
+//{
+//    func loop(_ action: () -> Void) // Extension Instance Method
+//    {
+//        for _ in 0..<self
+//        {
+//            action()
+//        }
+//    }
+//
+//    static func checkPrimality(of number: Int) -> Bool //Extension Type Method
+//    {
+//        if number <= 1
+//        {
+//            return false
+//        }
+//
+//        if number == 2
+//        {
+//            return true
+//        }
+//
+//        if number > 2 && number.isMultiple(of: 2)
+//        {
+//            return false
+//        }
+//
+//        for x in 3...Int(floor(sqrt(Double(number/2))))
+//        {
+//            if number.isMultiple(of: x)
+//            {
+//                return false
+//            }
+//        }
+//        return true
+//    }
+//}
+//
+//5.loop  // Execute Loop Closure for 5 times
+//{
+//    let r = Int.random(in: 1...100)
+//    print("Is \(r) a Prime Number ? \(Int.checkPrimality(of: r))")
+//}
+
+//extension Int
+//{
+//    mutating func square()
+//    {
+//        self *= self
+//    }
+//}
+//
+//var num = 81
+//num.square()
+//print(num)
+
+//struct Point
+//{
+//    var x: Int, y: Int
+//
+//    init(_ x: Int, _ y: Int)
+//    {
+//        self.x = x
+//        self.y = y
+//    }
+//}
+//
+//struct Square
+//{
+//    var cornerPoints: (Point, Point, Point, Point)
+//    var area: Int
+//}
+//
+//extension Square
+//{
+//    subscript(_ index: Int) -> Point
+//    {
+//        switch(index)
+//        {
+//        case 0:
+//            return cornerPoints.0
+//        case 1:
+//            return cornerPoints.1
+//        case 2:
+//            return cornerPoints.2
+//        case 3:
+//            return cornerPoints.3
+//        default:
+//            fatalError("Invalid Corner Point Index !")
+//        }
+//    }
+//}
+//let point1 = Point(0, 2)
+//let point2 = Point(2, 2)
+//let point3 = Point(2, 0)
+//let point4 = Point(4, 2)
+//
+//let square = Square(cornerPoints: (point1, point2, point3, point4), area: 4)
+//
+//print("3rd Point of Square is: \(square[2])")
+
+//extension Int
+//{
+//    enum Kind
+//    {
+//        case negative, zero, positive
+//    }
+//
+//    var kind: Kind
+//    {
+//        switch self
+//        {
+//        case 0:
+//            return .zero
+//        case let x where x > 0:
+//            return .positive
+//        default:
+//            return .negative
+//        }
+//    }
+//}
+//
+//func getKind(_ value: Int) -> String
+//{
+//    switch(value.kind)
+//    {
+//    case .zero:
+//        return "Zero"
+//    case .positive:
+//        return "Positive Integer"
+//    case .negative:
+//        return "Negative Integer"
+//    }
+//}
+//
+//for x in -5...5
+//{
+//    print("\(x) is \(getKind(x))")
+//}
+
+//protocol FullyNamed
+//{
+//    var fullName: String { get }
+//}
+//
+//struct Person: FullyNamed
+//{
+//    var firstName: String
+//    var lastName: String
+//    var fullName: String
+//    {
+//        "\(firstName) \(lastName)"
+//    }
+//}
+//
+//let person = Person(firstName: "Kris", lastName: "Sri")
+//print(person.fullName)
+
+//protocol EvenNumberGenerator
+//{
+//    static func randomEven() -> (number: Int, tries: Int)
+//}
+//
+//extension Int: EvenNumberGenerator
+//{
+//    static func randomEven() -> (number: Int, tries: Int)
+//    {
+//        var result = Int.random(in: 1...100)
+//        var count = 1
+//        while !result.isMultiple(of: 2)
+//        {
+//            count += 1
+//            result = Int.random(in: 1...100)
+//        }
+//        return (result,count)
+//    }
+//}
+//let result = Int.randomEven()
+//print("Got even number \(result.number) after \(result.tries) tries.")
+
+//protocol Togglable
+//{
+//    mutating func toggle()
+//}
+//
+//enum Switch: Togglable
+//{
+//    case on, off
+//
+//    mutating func toggle()
+//    {
+//        switch self
+//        {
+//        case .on:
+//            self = .off
+//        case .off:
+//            self = .on
+//        }
+//    }
+//}
+//
+//var fanSwitch = Switch.off
+//print("State of Fan: \(fanSwitch)")
+//print("Turning on Fan...")
+//fanSwitch.toggle()
+//print("State of Fan: \(fanSwitch)")
+
+//protocol AnonymousPerson
+//{
+//    var name: String { get set }
+//    var age: UInt { get set }
+//    init(age: UInt)
+//}
+//
+//struct Person: AnonymousPerson
+//{
+//    var name: String
+//    var age: UInt
+//
+//    init(age: UInt)
+//    {
+//        name = "Anonymous"
+//        self.age = age
+//    }
+//
+//    init(name: String, age: UInt)
+//    {
+//        self.name = name
+//        self.age = age
+//    }
+//}
+//
+//let unnamedPerson = Person(age: 21)
+//print(unnamedPerson)
+
+//protocol Identifiable
+//{
+//    var id: UInt { get }
+//    mutating func regenerateId()
+//}
+//
+//struct User: Identifiable, CustomStringConvertible
+//{
+//    private var _id: UInt
+//    var name: String
+//    var age: Int
+//    var description: String
+//    {
+//        "User(id: \(_id), name: \(name), age: \(age))"
+//    }
+//
+//    var id: UInt
+//    {
+//        _id
+//    }
+//
+//    mutating func regenerateId()
+//    {
+//        _id = UInt.random(in: 1...100)
+//    }
+//
+//    init(name: String, age: Int)
+//    {
+//        _id = UInt.random(in: 1...100)
+//        self.name = name
+//        self.age = age
+//    }
+//}
+//
+//struct Subject: Identifiable, CustomStringConvertible
+//{
+//    private var _id: UInt
+//    var name: String
+//    var department: String
+//    var description: String
+//    {
+//        "Subject(id: \(_id), name: \(name), department: \(department))"
+//    }
+//
+//    var id: UInt
+//    {
+//        _id
+//    }
+//
+//    mutating func regenerateId()
+//    {
+//        _id = UInt.random(in: 1...100)
+//    }
+//
+//    init(name: String, department: String)
+//    {
+//        _id = UInt.random(in: 1...100)
+//        self.name = name
+//        self.department = department
+//    }
+//}
+//
+//var dsa: Identifiable = Subject(name: "Data Structures and Algorithms", department: "CSE")
+//var student: Identifiable = User(name: "Kris", age: 21)
+//print("ID of DSA Subject: \(dsa.id)")
+//print("Regenerating ID of DSA...")
+//dsa.regenerateId()
+//print("ID of DSA Subject: \(dsa.id)")
+//print("Department of DSA is: \((dsa as! Subject).department)") // Downcasting to access department
+//print(dsa)
+//print(student)
+
+//class Point
+//{
+//    var x: Int, y: Int
+//
+//    init(_ x: Int, _ y: Int)
+//    {
+//        self.x = x
+//        self.y = y
+//    }
+//}
+//
+//extension Point: StringRepresentation
+//{
+//    var asString: String
+//    {
+//        "Point(x = \(x), y = \(y))"
+//    }
+//}
+//
+//extension Array: StringRepresentation where Element: StringRepresentation
+//{
+//    var asString: String
+//    {
+//        let itemsAsString = self.map { $0.asString }
+//        return "[" + itemsAsString.joined(separator: ", ") + "]"
+//    }
+//}
+//
+//let points = [Point(2, 4), Point(6, 7)]
+//print(points.asString)
+
+//protocol StringRepresentation
+//{
+//    var asString: String { get }
+//}
+//
+//struct Person
+//{
+//    var name: String
+//    var age: UInt
+//    var asString: String
+//    {
+//        "Person(name = \(name), age = \(age))"
+//    }
+//}
+//
+//extension Person: StringRepresentation{}
+//
+//print(Person(name: "Kris", age: 21) is StringRepresentation)
+
+//protocol AbstractList: AnyObject
+//{
+//    func addNewNode(_ newData: Int)
+//    func addMultipleNodes(_ newData: Int...)
+//}
+//
+//class Node: CustomStringConvertible
+//{
+//    var next: Node?
+//    var data: Int
+//    var description: String
+//    {
+//        var text = ""
+//        if let n = next
+//        {
+//            text = n.description
+//        }
+//        else
+//        {
+//            text = "nil"
+//        }
+//        return "\(data) -> \(text)"
+//    }
+//
+//    init(data: Int, next: Node? = nil)
+//    {
+//        self.data = data
+//        self.next = next
+//    }
+//}
+//
+//class LinkedList: AbstractList
+//{
+//    var root: Node
+//
+//    init(root: Node)
+//    {
+//        self.root = root
+//    }
+//
+//    func addNewNode(_ newData: Int)
+//    {
+//        var head = root
+//        let newNode = Node(data: newData)
+//        while head.next != nil
+//        {
+//            head = head.next!
+//        }
+//        head.next = newNode
+//    }
+//
+//    func addMultipleNodes(_ newData: Int...)
+//    {
+//        for x in newData
+//        {
+//            addNewNode(x)
+//        }
+//    }
+//
+//    func printList()
+//    {
+//        print(root)
+//    }
+//}
+//
+//var list = LinkedList(root: Node(data: 9))
+//list.addMultipleNodes(8, 7, 6, 5, 4, 3, 2, 1)
+//list.printList()
+
+//protocol Named
+//{
+//    var name: String { get }
+//}
+//
+//protocol Aged
+//{
+//    var age: Int { get }
+//}
+//
+//struct Person: Named, Aged
+//{
+//    var name: String
+//    var age: Int
+//}
+//
+//func wishHappyBirthday(to celebrator: Named & Aged)
+//{
+//    print("Happy birthday, \(celebrator.name), you're \(celebrator.age)!")
+//}
+//
+//let birthdayPerson = Person(name: "Ian Malcolm", age: 21)
+//wishHappyBirthday(to: birthdayPerson)
+
+//protocol StringRepresentation: CustomStringConvertible
+//{
+//    var asString: String { get }
+//}
+//
+//extension StringRepresentation
+//{
+//    var asString: String
+//    {
+//        return description
+//    }
+//}
+//
+//class Point: StringRepresentation
+//{
+//    var x: Int, y: Int
+//    var description: String
+//    {
+//        "Point(x: \(x), y: \(y))"
+//    }
+//
+//    init(_ x: Int, _ y: Int)
+//    {
+//        self.x = x
+//        self.y = y
+//    }
+//}
+//print(Point(8, 10).asString)
+
+//extension Collection where Element: Equatable
+//{
+//    func allEqual() -> Bool
+//    {
+//        for element in self
+//        {
+//            if element != self.first
+//            {
+//                return false
+//            }
+//        }
+//        return true
+//    }
+//}
+//let equalNumbers = [100, 100, 100, 100, 100]
+//print(equalNumbers.allEqual())
+
+//func swap<T>(_ a: inout T, _ b: inout T) // Generic Function for swapping two variables
+//{
+//    (a, b) = (b, a) // Using Tuple Syntax for swapping
+//}
+//
+//var a = 5, b = 6
+//print("a = \(a), b = \(b)")
+//print("After swapping...")
+//swap(&a, &b)
+//print("a = \(a), b = \(b)")
+//
+//var x = "Hello", y = "World"
+//print("x = \(x), y = \(y)")
+//print("After swapping...")
+//swap(&x, &y)
+//print("x = \(x), y = \(y)")
+
+//struct Stack<Element>
+//{
+//    private var values: [Element] = []
+//
+//    var count: Int
+//    {
+//        values.count
+//    }
+//
+//    mutating func push(_ newElement: Element)
+//    {
+//        values.append(newElement)
+//    }
+//
+//    mutating func pop()
+//    {
+//        values.removeLast()
+//    }
+//
+//    func peek() -> Element?
+//    {
+//        values.last
+//    }
+//
+//    func printStack()
+//    {
+//        print("\(values[values.endIndex - 1]) <- Top")
+//        var i = values.endIndex - 2
+//        while i >= values.startIndex
+//        {
+//            print(values[i])
+//            i -= 1
+//        }
+//    }
+//}
+
+//extension Stack
+//{
+//    var isEmpty: Bool
+//    {
+//        count == 0
+//    }
+//
+//    mutating func clearStack()
+//    {
+//        values.removeAll()
+//    }
+//}
+//
+//var intStack = Stack<Int>()
+//intStack.push(5)
+//intStack.push(4)
+//intStack.push(3)
+//intStack.push(2)
+//intStack.push(1)
+//print("The stack has: \(intStack.count) Elements.")
+//print("Original Stack:")
+//intStack.printStack()
+//print("Top element: \(intStack.peek()!)")
+//intStack.pop()
+//print("Top element after popping: \(intStack.peek()!)")
+//intStack.pop()
+//intStack.pop()
+//print("Now, the stack has: \(intStack.count) Elements.")
+//print("Stack's present state:")
+//intStack.printStack()
+//intStack.clearStack()
+//print("Is intStack empty now ? \(intStack.isEmpty)")
+
+//func sum<T: SignedNumeric>(_ values: T...) -> T
+//{
+//    var result: T = 0
+//    values.forEach {
+//        result += $0
+//    }
+//
+//    return result
+//}
+//
+//print(sum(99, 57, 86, 89.6, -98.2, 563, -42))
+
+//protocol Container
+//{
+//    associatedtype Item
+//    mutating func append(_ item: Item)
+//    var count: Int { get }
+//    subscript(i: Int) -> Item { get }
+//    associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
+//    func makeIterator() -> Iterator
+//}
+//
+//extension Container
+//{
+//    subscript<Indices: Sequence>(indices: Indices) -> [Item]
+//        where Indices.Iterator.Element == Int
+//    {
+//        var result: [Item] = []
+//        for index in indices
+//        {
+//            result.append(self[index])
+//        }
+//        return result
+//    }
+//}
+//
+//struct Stack<Element>: Container
+//{
+//
+//
+//    // Basic Implementation
+//    private var values: [Element] = []
+//
+//    mutating func push(_ newElement: Element)
+//    {
+//        values.append(newElement)
+//    }
+//
+//    mutating func pop()
+//    {
+//        values.removeLast()
+//    }
+//
+//    func peek() -> Element?
+//    {
+//        values.last
+//    }
+//
+//    func printStack()
+//    {
+//        print("\(values[values.endIndex - 1]) <- Top")
+//        var i = values.endIndex - 2
+//        while i >= values.startIndex
+//        {
+//            print(values[i])
+//            i -= 1
+//        }
+//    }
+//
+//    // Implementation of Container Protocol
+//    typealias Item = Element
+//
+//    mutating func append(_ item: Element)
+//    {
+//        self.push(item)
+//    }
+//
+//    var count: Int
+//    {
+//        values.count
+//    }
+//
+//    subscript(i: Int) -> Element
+//    {
+//        values[i]
+//    }
+//}
+//
+//extension Array: Container {}
+//
+//func allItemsMatch<C1: Container, C2: Container>
+//    (_ someContainer: C1, _ anotherContainer: C2) -> Bool where C1.Item == C2.Item, C1.Item: Equatable
+//{
+//    // Check that both containers contain the same number of items.
+//    if someContainer.count != anotherContainer.count
+//    {
+//        return false
+//    }
+//
+//    // Check each pair of items to see if they're equivalent.
+//    for i in 0..<someContainer.count
+//    {
+//        if someContainer[i] != anotherContainer[i]
+//        {
+//            return false
+//        }
+//    }
+//
+//    // All items match, so return true.
+//    return true
+//}
+//
+//extension Stack where Element: Equatable
+//{
+//    func isTop(_ item: Element) -> Bool
+//    {
+//        guard let topItem = values.last else
+//        {
+//            return false
+//        }
+//        return topItem == item
+//    }
+//}
+//
+//extension Container
+//{
+//    func average() -> Double where Item == Int
+//    {
+//        var sum = 0.0
+//        for index in 0..<count
+//        {
+//            sum += Double(self[index])
+//        }
+//        return sum / Double(count)
+//    }
+//
+//    func endsWith(_ item: Item) -> Bool where Item: Equatable
+//    {
+//        return count >= 1 && self[count-1] == item
+//    }
+//}
+//let numbers = [1260, 1200, 98, 76, 37]
+//print(numbers.average())
+//print(numbers.endsWith(37))
+
+//enum VendingMachineError: Error
+//{
+//    case invalidSelection
+//    case insufficientFunds(coinsNeeded: Int)
+//    case outOfStock
+//}
+
+//enum DivisionError: Error
+//{
+//    case divideByZero(cause: String)
+//}
+//
+//func divide(_ dividend: Int, _ divisor: Int) throws -> Int
+//{
+//    guard divisor != 0 else
+//    {
+//        throw DivisionError.divideByZero(cause: "Divisor is Zero !")
+//    }
+//    return dividend/divisor
+//}
+//
+//var result = try! divide(90, 45) // It is known beforehand that 90/45 won't throw an error
+//print("Quotient = \(result)")
